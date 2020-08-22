@@ -1,4 +1,4 @@
-TrialT,Group,Frame,Noun,Transform,ObjPair,StartLayout,TransformsideOFREP ,Transform,NounDist,P1,P2,P3,P4,P5,P6
+TrialT,Group,Frame,Noun,Transform,ObjPair,StartLayout,TransformsideOFREP ,TransformS,NounDist,P1,P2,P3,P4,P5,P6
 1,Shared,Indef,FirstMentioned,Morph,1-CARDUCK,AAB,Right,Center,Left,001.png,002.png,003.png,004.png,005.png,006.png
 2,Shared,Indef,FirstMentioned,Morph,2-PHONEDOLL,ABA,Left,Left,Right,007.png,008.png,009.png,010.png,011.png,012.png
 3,Shared,Indef,FirstMentioned,Morph,3-BLOCKCOW,BAA,Right,Right,Center,013.png,014.png,015.png,016.png,017.png,018.png
