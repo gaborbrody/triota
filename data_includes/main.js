@@ -17,9 +17,9 @@ newTrial( "consent" ,
      ,
     newText("<p>PURPOSE: The study is about how people understand language. We are interested in what adult behavior is like so we can find out how language comprehension and production change as a person develops.</p>")
      ,
-    newText("<p>PROCEDURES: In this survey, you will be asked look at a visual display and locate a particular image in what you read or hear.</p>")
+    newText("<p>PROCEDURES: In this survey, you will be asked look at a visual display and locate a particular objects in response to what you read or hear.</p>")
      ,
-    newText("<p>TIME INVOLVED: The study will take approximately 15 minutes of your time.</p>")
+    newText("<p>TIME INVOLVED: The study will take approximately 20 minutes of your time.</p>")
      ,
     newText("<p>COMPENSATION: The amount of compensation you will receive depends on the criterion and the length of the study, in keeping with the averages and standards used in the Amazon MechanicalTurk community.</p>")
     ,
@@ -40,7 +40,7 @@ newTrial( "consent" ,
     newText("<p>CONSENT TO PARTICIPATE: Clicking the button below confirms that you have read and understood the information in this document, are 18 years old or older and that you agree to volunteer as a research participant for this study.</p>")
 
 
-    
+
     ,
     newButton("I Consent")
         .print()
@@ -76,10 +76,10 @@ newTrial( "welcome" ,
 .log( "ID" , getVar("ID") )
 
 
-Template( variable => 
+Template( variable =>
 //Load pictures
 newTrial( "experiment",
-newImage("cross", "cross.png"),    
+newImage("cross", "cross.png"),
 newImage("01", variable.P1),
 newImage("02", variable.P2),
 newImage("03", variable.P3),
@@ -93,11 +93,11 @@ newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.
 
 //Present pictures one by one
 
-newCanvas( "myCanvas" , 1024 , 768 )
+newCanvas( "myCanvas" , 800 , 600 )
     .settings.css( "border" , "solid 1px black" )
     .settings.center()
     .settings.add( "center at 50%" , "center at 50%" , getImage("cross") )
-    .settings.add(356, 667, getImage("starter") )
+    .settings.add(283, 521, getImage("starter") )
     .print()
     ,
 newSelector("starter") //Click to start trials
@@ -150,7 +150,7 @@ newSelector("starter") //Click to start trials
      ,
 
 newAudio("audiofile", "magic.mp3") // play audio
-.play() 
+.play()
 ,
     newTimer(2500)
         .start()
@@ -159,9 +159,9 @@ newAudio("audiofile", "magic.mp3") // play audio
             getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
-     .settings.add(1, 100, getImage("left") )
-     .settings.add(367, 100, getImage("center") )
-    .settings.add(732, 100, getImage("right") )
+     .settings.add(1, 78, getImage("left") )
+     .settings.add(287, 78, getImage("center") )
+    .settings.add(572, 78, getImage("right") )
      .print()
 ,
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
@@ -173,20 +173,27 @@ newSelector("shapes")
     .wait()
 ,
     getVar("RT").set( v => Date.now() - v ) //RT measurement end
-,   
+,
 newTimer("hurry", 1200)
     .start()
     .wait()
-    
-        
+
+
 )
+
+//log relevant variables
 .log( "ReactionTime" , getVar("RT") )
 .log( "ID", getVar("ID"))
-.log("Trialtype",variable.TrialT)  
-.log("TransformSide",variable.Transform)
+.log("Trialtype",variable.TrialT)
+.log("ObjPair",variable.ObjPair)
+.log("Group",variable.Group)
+.log("Frame",variable.Frame)
+.log("Noun",variable.Noun)
+.log("TransformType",variable.Transform)
+.log("TransformSide",variable.TransformS)
 .log("NounDist",variable.NounDist)
 )
-SendResults( "send" )
+SendResults( "send" ) //send results: you have to get here in order for results to be sent at all!!
 
 
 newTrial( "final" ,
