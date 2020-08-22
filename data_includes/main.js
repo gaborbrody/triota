@@ -1,5 +1,5 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-DebugOff()
+//DebugOff()
 
 
 Sequence( "consent", "welcome" , randomize("experiment") , "send" , "final" );
@@ -167,8 +167,8 @@ newAudio("audiofile", "magic.mp3") // play audio
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
-.add( getImage("left") , getImage("center") , getImage("right") )
-    .settings.frame("dashed 3px black")
+.add( getImage("left") , getImage("center") , getImage("right") ) //add selector shapes (invisble)
+    .settings.frame("dashed 3px black") //define how selection looks like
     .log()
     .wait()
 ,
