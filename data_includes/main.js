@@ -60,7 +60,7 @@ newTrial( "welcome" ,
     ,
     newText("<p>And please turn your browser full screen, and make sure that your computer is not muted</p>")
     ,
-    newText("<p>Please enter your mturkID and then click the button below to start the experiment.</p>")
+    newText("<p>Please enter your mturkID and then click the button below to see the detailed instructions and start the experiment.</p>")
     ,
     newTextInput("inputID")
         .print()
@@ -98,9 +98,13 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
         .settings.frame("dashed 3px black") //define how selection looks like
         .wait()
         ,
+        newTimer("hurry", 1200)
+            .start()
+            .wait()
+            ,
         getCanvas("myCanvasT") //training p2
          .settings.center()
-         .settings.add( "center at 50%" , "center at 50%" , getImage("02") )
+         .settings.add( "center at 50%" , "center at 50%" , getImage("T2") )
          .settings.add(267, 564, getImage("starter") )
          .print()
          ,
@@ -109,13 +113,6 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
              .settings.frame("dashed 3px black")
              .wait()
 )
-
-
-
-
-
-
-
 
 Template( variable =>
 //Load pictures
