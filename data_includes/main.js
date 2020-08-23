@@ -2,7 +2,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 //DebugOff()
 
 
-Sequence( "consent", "welcome" , randomize("experiment") , "send" , "final" );
+Sequence( "consent", "welcome" , "instructions", randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -52,15 +52,15 @@ newTrial( "welcome" ,
     ,
     newText("<p>Welcome!</p>")
     ,
-    newText("<p>Piglet and tigger are playing at their home. They have their toys on their shelves.</p>")
+    newText("<p>Piglet and Tigger are playing at their home. They have their toys on their shelves.</p>")
     ,
     newText("<p>They have a really high shelves and they cannot reach their toys.</p>")
     ,
     newText("<p> When they ask for a toy, can you help them by clicking on it?</p>")
     ,
-    newText("<p>And please turn your browser full screen.</p>")
+    newText("<p>And please turn your browser full screen, and make sure that your computer is not muted</p>")
     ,
-    newText("<p>Please enter your ID and then click the button below to start the experiment.</p>")
+    newText("<p>Please enter your mturkID and then click the button below to start the experiment.</p>")
     ,
     newTextInput("inputID")
         .print()
@@ -74,6 +74,47 @@ newTrial( "welcome" ,
         .set( getTextInput("inputID") )
 )
 .log( "ID" , getVar("ID") )
+
+newTrial( "instructions" ,
+
+newImage("T1", "T1.png"),
+newImage("T2", "T2.png"),
+newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
+
+newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
+    .settings.css( "border" , "solid 1px black" )
+    .settings.center()
+    .settings.add( "center at 50%" , "center at 50%" , getImage("T1") )
+    .settings.add(1, 78, getImage("left") )
+    .settings.add(287, 78, getImage("center") )
+   .settings.add(572, 78, getImage("right") )
+    .print()
+    ,
+    newSelector("training")
+    .add( getImage("left") , getImage("center") , getImage("right") ) //add selector shapes (invisble)
+        .settings.frame("dashed 3px black") //define how selection looks like
+        .wait()
+        ,
+        getCanvas("myCanvasT") //training p2
+         .settings.center()
+         .settings.add( "center at 50%" , "center at 50%" , getImage("02") )
+         .settings.add(267, 564, getImage("starter") )
+         .print()
+         ,
+         newSelector("starter") //Click to start trials
+         .add( getImage("starter") )
+             .settings.frame("dashed 3px black")
+             .wait()
+)
+
+
+
+
+
+
 
 
 Template( variable =>
