@@ -238,7 +238,7 @@ newTrial( "final" ,
     newText("<p>Thank you for your participation!</p>")
         .print()
     ,
-    newText("<p>Your secret code is:</p>")
+    newText("<p>Your approval code is:</p>")
         .print()
     ,
     newText("<p>H4L49H7M<p>")
