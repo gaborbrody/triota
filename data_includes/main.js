@@ -238,7 +238,10 @@ newTrial( "final" ,
     newText("<p>Thank you for your participation!</p>")
         .print()
     ,
-    newText("<p><a href='https://www.pcibex.net/' href='_blank'>Click here to validate your participation.</a></p>")
+    newText("<p>Your secret code is:</p>")
+        .print()
+    ,
+    newText("<p>H4L49H7M/p>")
         .print()
     ,
     newButton("void")
