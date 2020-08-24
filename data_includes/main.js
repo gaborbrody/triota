@@ -241,7 +241,7 @@ newTrial( "final" ,
     newText("<p>Your secret code is:</p>")
         .print()
     ,
-    newText("<p>H4L49H7M/p>")
+    newText("<p>H4L49H7M<p>")
         .print()
     ,
     newButton("void")
