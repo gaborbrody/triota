@@ -1,5 +1,5 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-//DebugOff()
+DebugOff()
 
 
 Sequence( "consent", "welcome" , "instructions", randomize("experiment") , "send" , "final" );
