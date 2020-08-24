@@ -27,7 +27,7 @@ newTrial( "consent" ,
     ,
     newText("<p>BENEFITS: There is no anticipated direct benefit from being in this research study.</p>")
     ,
-    newText("<p>CONFIDENTIALITY: Because participants are recruited through Amazon's Mechanical Turk website, participation happens over the internet and we have no information about participants’ identities. We collect Worker ID numbers through Amazon Mechanical Turk. These will be stored electronically on password-protected computers, to which only authorized researchers will have access. Following standard practice, we will record IP address to check whether a particular internet connection is being used an unreasonable number of times for the same experiment. This information will only be used to exclude multiple datasets generated from the same IP address. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
+    newText("<p>CONFIDENTIALITY: Information gathered in these studies will remain strictly confidential and published reports will not mention individuals by name. If shared, data will be identified solely by anonymized numerical codes. Because participants are recruited through Amazon's Mechanical Turk website, participation happens over the internet and we have no information about participants’ identities. We collect Worker ID numbers through Amazon Mechanical Turk. These will be stored electronically on password-protected computers, to which only authorized researchers will have access. Following standard practice, we will record IP address to check whether a particular internet connection is being used an unreasonable number of times for the same experiment. This information will only be used to exclude multiple datasets generated from the same IP address. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
     ,
     newText("<p>VOLUNTARY: You do not have to be in this study if you do not want to be. Even if you decide to be in this study, you can change your mind and stop at any time.</p>")
     ,
@@ -38,8 +38,8 @@ newTrial( "consent" ,
     newText("<p>IMPORTANT INFORMATION ABOUT YOUR MTURK ID: This ID does not directly identify you, but it can be linked to your public profile page. You may, therefore, wish to restrict what information you share on this public profile. We will not share your mTurk ID with anyone outside of our research team. If you ever contact us, Amazon.com will automatically insert your email address into the message so that we can reply to you. We will use your name and email only to respond to your communication and will never distribute it to anyone outside of our research team. For more information about the privacy and confidentiality limitations associated with using mTurk please refer to Amazon’s mTurk Privacy Policy: https://www.mturk.com/mturk/privacynotice and https://www.mturk.com/mturk/contact .</p>")
     ,
     newText("<p>CONSENT TO PARTICIPATE: Clicking the button below confirms that you have read and understood the information in this document, are 18 years old or older and that you agree to volunteer as a research participant for this study.</p>")
-
-
+    ,
+    newText("<p>You can print a copy of this form</p>")
 
     ,
     newButton("I Consent")
