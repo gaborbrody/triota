@@ -167,10 +167,15 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
      ,
-    newTimer(1500)
-        .start()
-        .wait()
-        ,
+
+     newAudio("audiofile", "magic.mp3") // play audio
+     .play()
+     ,
+         newTimer(2500)
+             .start()
+             .wait()
+             ,
+
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
@@ -186,14 +191,10 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("05") )
      .print()
      ,
-
-newAudio("audiofile", "magic.mp3") // play audio
-.play()
-,
-    newTimer(2500)
-        .start()
-        .wait()
-        ,
+     newTimer(1500)
+         .start()
+         .wait()
+         ,
             getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
