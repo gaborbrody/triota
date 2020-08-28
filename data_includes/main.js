@@ -168,10 +168,14 @@ newSelector("starter") //Click to start trials
      .print()
      ,
 
+<<<<<<< Updated upstream
      newAudio("audiofile", "magic.mp3") // play audio
      .play()
      ,
          newTimer(2500)
+=======
+         newTimer(variable.T1)
+>>>>>>> Stashed changes
              .start()
              .wait()
              ,
@@ -181,7 +185,7 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
      ,
-    newTimer(1500)
+    newTimer(variable.T2)
         .start()
         .wait()
              ,
