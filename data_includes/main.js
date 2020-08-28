@@ -128,6 +128,9 @@ newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.pn
 newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
+newAudio("A1", variable.A1),
+newAudio("A1", variable.A2),
+
 
 //Present pictures one by one
 
@@ -167,8 +170,10 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
      ,
+     getAudio("A1").play()
+,
 
-         newTimer(variable.T1)
+     newTimer(variable.T1)
              .start()
              .wait()
              ,
@@ -178,6 +183,11 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
      ,
+
+     getAudio("A2").play()
+,
+
+
     newTimer(variable.T2)
         .start()
         .wait()
