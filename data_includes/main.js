@@ -129,7 +129,7 @@ newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
 newAudio("A1", variable.A1),
-newAudio("A1", variable.A2),
+newAudio("A2", variable.A2),
 
 
 //Present pictures one by one
