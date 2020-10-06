@@ -2,7 +2,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 //DebugOff()
 
 
-Sequence( "consent", "welcome" , "instructions", randomize("experiment") , "send" , "final" );
+Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -46,6 +46,27 @@ newTrial( "consent" ,
         .print()
         .wait()
 )
+
+newTrial( "audiocheck" ,
+    defaultText
+        .print()
+    ,
+    newText("<p>In order to proceed enter the last word of the audio. If you can't hear it make sure your device is not muted</p>")
+    ,
+    newAudio("test", "https://expt.pcibex.net/ibexexps/example/example/test.mp3")
+    .print()
+    .wait()
+    ,
+newTextInput("audiocheck")
+    .settings.lines(1)
+    .print()
+,
+newButton("save", "Save")
+    .print()
+    .wait( getTextInput("audiocheck").test.text("sentence") )
+)
+
+
 newTrial( "welcome" ,
     defaultText
         .print()
@@ -260,7 +281,7 @@ newTrial( "final" ,
     newText("<p>Your approval code is:</p>")
         .print()
     ,
-    newText("<p>BYHAN8EF<p>")
+    newText("<p>ZYFDKR12<p>")
         .print()
     ,
     newButton("void")
