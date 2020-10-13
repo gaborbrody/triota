@@ -1,5 +1,6 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-DebugOff()
+//DebugOff()
+//disjoint with audio
 
 
 Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
@@ -145,6 +146,7 @@ newImage("03", variable.P3),
 newImage("04", variable.P4),
 newImage("05", variable.P5),
 newImage("06", variable.P6),
+newImage("07", variable.P7),
 newAudio("A4", variable.A4),
 newAudio("A5", variable.A5),
 newAudio("A6", variable.A6),
@@ -182,8 +184,11 @@ newSelector("starter") //Click to start trials
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("02") )
      .print()
+          ,
+      getAudio("A4") // play audio 4
+             .play()
      ,
-    newTimer(1500)
+    newTimer(3000)
         .start()
         .wait()
         ,
@@ -192,9 +197,10 @@ newSelector("starter") //Click to start trials
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
-     ,
-      getAudio("A4") // play audio 5
+
+      getAudio("M") // play audio 2
              .play()
+             ,
              ,
          newTimer(3000)
              .start()
@@ -206,10 +212,10 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
      ,
-      getAudio("M") // play audio 2
+      getAudio("A5") // play audio 5
              .play()
              ,
-    newTimer(3000)
+    newTimer(4500)
         .start()
         .wait()
              ,
@@ -220,16 +226,24 @@ newSelector("starter") //Click to start trials
      .settings.add( "center at 50%" , "center at 50%" , getImage("05") )
      .print()
      ,
-      getAudio("A5") // play audio 5
-             .play()
-             ,
-     newTimer(4500)
+
+     newTimer(1500)
+         .start()
+         .wait()
+         ,
+             getCanvas("myCanvas")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
+     .print()
+     ,
+
+     newTimer(1500)
          .start()
          .wait()
          ,
             getCanvas("myCanvas")
      .settings.center()
-     .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
+     .settings.add( "center at 50%" , "center at 50%" , getImage("07") )
      .settings.add(1, 78, getImage("left") )
      .settings.add(287, 78, getImage("center") )
     .settings.add(572, 78, getImage("right") )
