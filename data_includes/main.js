@@ -250,13 +250,13 @@ newSelector("starter") //Click to start trials
      .print()
 ,
 
-  getAudio("T") // play audio 2
-           .play()
-          ,
-               newTimer(3500)
-       .start()
-       .wait()
-        ,
+ getAudio("T") // play audio 2
+     .play()
+           ,
+           newTimer(4000)
+    .start()
+  .wait()
+       ,
       getAudio("A6") // play audio 6
              .play()
              ,
