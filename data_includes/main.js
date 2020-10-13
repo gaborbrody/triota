@@ -151,7 +151,7 @@ newAudio("A4", variable.A4),
 newAudio("A5", variable.A5),
 newAudio("A6", variable.A6),
 newAudio("M", "Magic.mp3"),
-newAudio("T", "trial1_a.mp3"),
+newAudio("T", "Toys.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
@@ -250,13 +250,13 @@ newSelector("starter") //Click to start trials
      .print()
 ,
 
-    ///  getAudio("T") // play audio 2
-     //        .play()
- //            ,
-      //            newTimer(3500)
-    //     .start()
-     //    .wait()
-         //,
+  getAudio("T") // play audio 2
+           .play()
+          ,
+               newTimer(3500)
+       .start()
+       .wait()
+        ,
       getAudio("A6") // play audio 6
              .play()
              ,
