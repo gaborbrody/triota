@@ -197,10 +197,9 @@ newSelector("starter") //Click to start trials
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
-
+,
       getAudio("M") // play audio 2
              .play()
-             ,
              ,
          newTimer(3000)
              .start()
