@@ -1,8 +1,8 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-DebugOff()
+//DebugOff()
 
 
-Sequence( "consent", "welcome" , "instructions", randomize("experiment") , "send" , "final" );
+Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -46,6 +46,27 @@ newTrial( "consent" ,
         .print()
         .wait()
 )
+
+newTrial( "audiocheck" ,
+    defaultText
+        .print()
+    ,
+    newText("<p>In order to proceed enter the last word of the audio. If you can't hear it make sure your device is not muted</p>")
+    ,
+    newAudio("test", "https://expt.pcibex.net/ibexexps/example/example/test.mp3")
+    .print()
+    .wait()
+    ,
+newTextInput("audiocheck")
+    .settings.lines(1)
+    .print()
+,
+newButton("save", "Save")
+    .print()
+    .wait( getTextInput("audiocheck").test.text("sentence") )
+)
+
+
 newTrial( "welcome" ,
     defaultText
         .print()
@@ -124,6 +145,10 @@ newImage("03", variable.P3),
 newImage("04", variable.P4),
 newImage("05", variable.P5),
 newImage("06", variable.P6),
+newAudio("A4", variable.A4),
+newAudio("A5", variable.A5),
+newAudio("A6", variable.A6),
+newAudio("M", "Magic.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
@@ -162,38 +187,46 @@ newSelector("starter") //Click to start trials
         .start()
         .wait()
         ,
+
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
      ,
-    newTimer(1500)
-        .start()
-        .wait()
-        ,
+      getAudio("A4") // play audio 5
+             .play()
+             ,
+         newTimer(3000)
+             .start()
+             .wait()
+             ,
+
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
      ,
-    newTimer(1500)
+      getAudio("M") // play audio 2
+             .play()
+             ,
+    newTimer(3000)
         .start()
         .wait()
              ,
+
 
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("05") )
      .print()
      ,
-
-newAudio("audiofile", "magic.mp3") // play audio
-.play()
-,
-    newTimer(2500)
-        .start()
-        .wait()
-        ,
+      getAudio("A5") // play audio 5
+             .play()
+             ,
+     newTimer(4500)
+         .start()
+         .wait()
+         ,
             getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
@@ -202,6 +235,13 @@ newAudio("audiofile", "magic.mp3") // play audio
     .settings.add(572, 78, getImage("right") )
      .print()
 ,
+      getAudio("A6") // play audio 6
+             .play()
+             ,
+     newTimer(4500)
+         .start()
+         .wait()
+         ,
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
@@ -241,7 +281,7 @@ newTrial( "final" ,
     newText("<p>Your approval code is:</p>")
         .print()
     ,
-    newText("<p>H4L49H7M<p>")
+    newText("<p>ZYFDKR12<p>")
         .print()
     ,
     newButton("void")

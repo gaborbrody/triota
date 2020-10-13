@@ -1,0 +1,18 @@
+TrialT,Group,Frame,Noun,Transform,ObjPair,StartLayout,TransformsideOFREP ,TransformS,NounDist,P1,P2,P3,P4,P5,P6,A4,A5,A6
+1,Shared,Indef,FirstMentioned,Morph,1-CARDUCK,AAB,Right,Center,Left,001.png,002.png,003.png,004.png,005.png,006.png,1.mp3,a1.mp3,b1.mp3
+2,Shared,Indef,FirstMentioned,Morph,2-PHONEDOLL,ABA,Left,Left,Right,007.png,008.png,009.png,010.png,011.png,012.png,2.mp3,a2.mp3,b2.mp3
+3,Shared,Indef,FirstMentioned,Morph,3-BLOCKCOW,BAA,Right,Right,Center,013.png,014.png,015.png,016.png,017.png,018.png,3.mp3,a3.mp3,b3.mp3
+4,Shared,Indef,FirstMentioned,Morph,4-DINOJACK,AAB,Right,Center,Right,019.png,020.png,021.png,022.png,023.png,024.png,4.mp3,a4.mp3,b4.mp3
+9,Shared,Indef,NotFirst,Morph,9-TRUCKSHOVEL,BAA,Right,Right,Left,049.png,050.png,051.png,052.png,053.png,054.png,1.mp3,a9.mp3,b9.mp3
+10,Shared,Indef,NotFirst,Morph,10-CRAYONKITE,AAB,Left,Left,Right,055.png,056.png,057.png,058.png,059.png,060.png,2.mp3,a10.mp3,b10.mp3
+11,Shared,Indef,NotFirst,Morph,11-GUITARCAT,ABA,Left,Left,Center,061.png,062.png,063.png,064.png,065.png,066.png,3.mp3,a11.mp3,b11.mp3
+12,Shared,Indef,NotFirst,Morph,12-YOYOGIRAFFE,BAA,Right,Right,Left,067.png,068.png,069.png,070.png,071.png,072.png,4.mp3,a12.mp3,b12.mp3
+21,Shared,Def,NotFirst,Morph,5-BOOKPLANE,BAB,Right,Right,Center,121.png,122.png,123.png,124.png,125.png,126.png,1.mp3,a21.mp3,b21.mp3
+22,Shared,Def,NotFirst,Morph,6-BEARBALL,ABB,Right,Right,Left,127.png,128.png,129.png,130.png,131.png,132.png,2.mp3,a22.mp3,b22.mp3
+23,Shared,Def,NotFirst,Morph,7-TRAINDRUM,BBA,Left,Left,Right,133.png,134.png,135.png,136.png,137.png,138.png,3.mp3,a23.mp3,b23.mp3
+24,Shared,Def,NotFirst,Morph,8-ROBOTBOAT,BAB,Left,Left,Center,139.png,140.png,141.png,142.png,143.png,144.png,4.mp3,a24.mp3,b24.mp3
+29,Shared,Def,FirstMentioned,Morph,13-ROCKETHAMMER,BBA,Right,Center,Left,169.png,170.png,171.png,172.png,173.png,174.png,1.mp3,a29.mp3,b29.mp3
+30,Shared,Def,FirstMentioned,Morph,14-BIKEHIPPO,BAB,Right,Right,Left,175.png,176.png,177.png,178.png,179.png,180.png,2.mp3,a30.mp3,b30.mp3
+31,Shared,Def,FirstMentioned,Morph,15-PONYFRISBEE,ABB,Left,Center,Right,181.png,182.png,183.png,184.png,185.png,186.png,3.mp3,a31.mp3,b31.mp3
+32,Shared,Def,FirstMentioned,Morph,16-BUCKETHOUSE,BBA,Left,Left,Right,187.png,188.png,189.png,190.png,191.png,192.png,4.mp3,a32.mp3,b32.mp3
+33,Shared,AnythingBut,NotFirst,Switch,2-PHONEDOLL,BAA,Left,Center,None,193.png,194.png,195.png,196.png,197.png,198.png,1.mp3,a33.mp3,b33.mp3
