@@ -303,7 +303,7 @@ newTrial( "final" ,
     newText("<p>Your approval code is:</p>")
         .print()
     ,
-    newText("<p>X366CWNK<p>")
+    newText("<p>TWUU7Y7T<p>")
         .print()
     ,
     newButton("void")
