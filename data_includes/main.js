@@ -1,8 +1,9 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 DebugOff()
+//disjoint with audio
 
 
-Sequence( "consent", "welcome" , "instructions", randomize("experiment") , "send" , "final" );
+Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -27,15 +28,15 @@ newTrial( "consent" ,
     ,
     newText("<p>BENEFITS: There is no anticipated direct benefit from being in this research study.</p>")
     ,
-    newText("<p>CONFIDENTIALITY: Information gathered in these studies will remain strictly confidential and published reports will not mention individuals by name. If shared, data will be identified solely by anonymized numerical codes. Because participants are recruited through Amazon's Mechanical Turk website, participation happens over the internet and we have no information about participants’ identities. We collect Worker ID numbers through Amazon Mechanical Turk. These will be stored electronically on password-protected computers, to which only authorized researchers will have access. Following standard practice, we will record IP address to check whether a particular internet connection is being used an unreasonable number of times for the same experiment. This information will only be used to exclude multiple datasets generated from the same IP address. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
+    newText("<p>CONFIDENTIALITY: Information gathered in these studies will remain strictly confidential and published reports will not mention individuals by name. If shared, data will be identified solely by anonymized numerical codes. Because participants are recruited through Amazon's Mechanical Turk website, participation happens over the internet and we have no information about participantsâ€™ identities. We collect Worker ID numbers through Amazon Mechanical Turk. These will be stored electronically on password-protected computers, to which only authorized researchers will have access. Following standard practice, we will record IP address to check whether a particular internet connection is being used an unreasonable number of times for the same experiment. This information will only be used to exclude multiple datasets generated from the same IP address. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
     ,
     newText("<p>VOLUNTARY: You do not have to be in this study if you do not want to be. Even if you decide to be in this study, you can change your mind and stop at any time.</p>")
     ,
     newText("<p>CONTACT INFORMATION: If you have any questions about your participation in this study, you can call Roman Feiman at 401-863-6860 or email Roman_Feiman@Brown.edu</p>")
     ,
-    newText("<p>YOUR RIGHTS: If you have questions about your rights as a research participant, you can contact Brown University’s Human Research Protection Program at 401-863-3050 or email them at IRB@Brown.edu.</p>")
+    newText("<p>YOUR RIGHTS: If you have questions about your rights as a research participant, you can contact Brown Universityâ€™s Human Research Protection Program at 401-863-3050 or email them at IRB@Brown.edu.</p>")
     ,
-    newText("<p>IMPORTANT INFORMATION ABOUT YOUR MTURK ID: This ID does not directly identify you, but it can be linked to your public profile page. You may, therefore, wish to restrict what information you share on this public profile. We will not share your mTurk ID with anyone outside of our research team. If you ever contact us, Amazon.com will automatically insert your email address into the message so that we can reply to you. We will use your name and email only to respond to your communication and will never distribute it to anyone outside of our research team. For more information about the privacy and confidentiality limitations associated with using mTurk please refer to Amazon’s mTurk Privacy Policy: https://www.mturk.com/mturk/privacynotice and https://www.mturk.com/mturk/contact .</p>")
+    newText("<p>IMPORTANT INFORMATION ABOUT YOUR MTURK ID: This ID does not directly identify you, but it can be linked to your public profile page. You may, therefore, wish to restrict what information you share on this public profile. We will not share your mTurk ID with anyone outside of our research team. If you ever contact us, Amazon.com will automatically insert your email address into the message so that we can reply to you. We will use your name and email only to respond to your communication and will never distribute it to anyone outside of our research team. For more information about the privacy and confidentiality limitations associated with using mTurk please refer to Amazonâ€™s mTurk Privacy Policy: https://www.mturk.com/mturk/privacynotice and https://www.mturk.com/mturk/contact .</p>")
     ,
     newText("<p>CONSENT TO PARTICIPATE: Clicking the button below confirms that you have read and understood the information in this document, are 18 years old or older and that you agree to volunteer as a research participant for this study.</p>")
     ,
@@ -46,6 +47,27 @@ newTrial( "consent" ,
         .print()
         .wait()
 )
+
+newTrial( "audiocheck" ,
+    defaultText
+        .print()
+    ,
+    newText("<p>In order to proceed enter the last word of the audio. If you can't hear it make sure your device is not muted</p>")
+    ,
+    newAudio("test", "https://expt.pcibex.net/ibexexps/example/example/test.mp3")
+    .print()
+    .wait()
+    ,
+newTextInput("audiocheck")
+    .settings.lines(1)
+    .print()
+,
+newButton("save", "Save")
+    .print()
+    .wait( getTextInput("audiocheck").test.text("sentence") )
+)
+
+
 newTrial( "welcome" ,
     defaultText
         .print()
@@ -124,6 +146,12 @@ newImage("03", variable.P3),
 newImage("04", variable.P4),
 newImage("05", variable.P5),
 newImage("06", variable.P6),
+newImage("07", variable.P7),
+newAudio("A4", variable.A4),
+newAudio("A5", variable.A5),
+newAudio("A6", variable.A6),
+newAudio("M", "Magic.mp3"),
+newAudio("T", "Toys.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
@@ -157,29 +185,41 @@ newSelector("starter") //Click to start trials
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("02") )
      .print()
+          ,
+      getAudio("A4") // play audio 4
+             .play()
      ,
-    newTimer(1500)
+    newTimer(3000)
         .start()
         .wait()
         ,
+
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
      .print()
-     ,
-    newTimer(1500)
-        .start()
-        .wait()
+,
+    getAudio("M") // play audio 2
+            .play()
+           ,
+     newTimer(3000)
+           .start()
+            .wait()
         ,
+
     getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
      ,
-    newTimer(1500)
+      getAudio("A5") // play audio 5
+             .play()
+             ,
+    newTimer(4500)
         .start()
         .wait()
              ,
+
 
     getCanvas("myCanvas")
      .settings.center()
@@ -187,21 +227,43 @@ newSelector("starter") //Click to start trials
      .print()
      ,
 
-newAudio("audiofile", "magic.mp3") // play audio
-.play()
-,
-    newTimer(2500)
-        .start()
-        .wait()
-        ,
-            getCanvas("myCanvas")
+     newTimer(1500)
+         .start()
+         .wait()
+         ,
+             getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
+     .print()
+     ,
+
+     newTimer(1500)
+         .start()
+         .wait()
+         ,
+            getCanvas("myCanvas")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("07") )
      .settings.add(1, 78, getImage("left") )
      .settings.add(287, 78, getImage("center") )
     .settings.add(572, 78, getImage("right") )
      .print()
 ,
+
+ getAudio("T") // play audio 2
+     .play()
+           ,
+           newTimer(4000)
+    .start()
+  .wait()
+       ,
+      getAudio("A6") // play audio 6
+             .play()
+             ,
+     newTimer(4000)
+         .start()
+         .wait()
+         ,
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
@@ -241,7 +303,7 @@ newTrial( "final" ,
     newText("<p>Your approval code is:</p>")
         .print()
     ,
-    newText("<p>H4L49H7M<p>")
+    newText("<p>TWUU7Y7T<p>")
         .print()
     ,
     newButton("void")
