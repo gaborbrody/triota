@@ -1,9 +1,10 @@
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-DebugOff()
+//DebugOff()
 //disjoint with audio
 
 
-Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
+//Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
+Sequence( "audiocheck",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -102,7 +103,6 @@ newTrial( "instructions" ,
 newImage("T1", "T1.png"),
 newImage("T2", "T2.png"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
-newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
 
@@ -116,7 +116,7 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     .print()
     ,
     newSelector("training")
-    .add( getImage("left") , getImage("center") , getImage("right") ) //add selector shapes (invisble)
+    .add( getImage("left")  , getImage("right") ) //add selector shapes (invisble)
         .settings.frame("dashed 3px black") //define how selection looks like
         .wait()
         ,
@@ -147,15 +147,16 @@ newImage("04", variable.P4),
 newImage("05", variable.P5),
 newImage("06", variable.P6),
 newImage("07", variable.P7),
+newImage("08", variable.P8),
 newAudio("A4", variable.A4),
 newAudio("A5", variable.A5),
 newAudio("A6", variable.A6),
 newAudio("M", "Magic.mp3"),
-newAudio("T", "Toys.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
-newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
+newImage("GIF1", "https://i.giphy.com/media/xIH1nf7uUuQcU/giphy.gif"),
+
 
 //Present pictures one by one
 
@@ -166,13 +167,13 @@ newCanvas( "myCanvas" , 800 , 600 )
     .settings.add(283, 521, getImage("starter") )
     .print()
     ,
-newSelector("starter") //Click to start trials
-.add( getImage("starter") )
+    newSelector("starter") //Click to start trials
+    .add( getImage("starter") )
     .settings.frame("dashed 3px black")
     .wait()
 
     ,
-    getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("01") )
      .print()
@@ -181,11 +182,18 @@ newSelector("starter") //Click to start trials
         .start()
         .wait()
     ,
-    getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("02") )
      .print()
           ,
+
+
+getCanvas("myCanvas")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
+     .print()
+,
       getAudio("A4") // play audio 4
              .play()
      ,
@@ -194,80 +202,74 @@ newSelector("starter") //Click to start trials
         .wait()
         ,
 
-    getCanvas("myCanvas")
-     .settings.center()
-     .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
-     .print()
-,
-    getAudio("M") // play audio 2
-            .play()
-           ,
-     newTimer(3000)
-           .start()
-            .wait()
-        ,
-
-    getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("04") )
      .print()
-     ,
-      getAudio("A5") // play audio 5
-             .play()
-             ,
-    newTimer(4500)
+,
+    newTimer(1500)
         .start()
         .wait()
              ,
 
 
-    getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("05") )
      .print()
      ,
-
+    getAudio("M") // play audio 2
+            .play()
+        ,
      newTimer(1500)
          .start()
          .wait()
          ,
-             getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("06") )
      .print()
      ,
-
+    getAudio("M") // play audio 2
+            .play()
+           ,
      newTimer(1500)
          .start()
          .wait()
          ,
-            getCanvas("myCanvas")
+getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("07") )
+     .print()
+     ,
+    
+      getAudio("A5") // play audio 5
+             .play()
+             ,
+     newTimer(3000)
+         .start()
+         .wait()
+         ,
+getCanvas("myCanvas")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("08") )
      .settings.add(1, 78, getImage("left") )
-     .settings.add(287, 78, getImage("center") )
     .settings.add(572, 78, getImage("right") )
      .print()
-,
+    ,
 
- getAudio("T") // play audio 2
-     .play()
-           ,
-           newTimer(4000)
-    .start()
-  .wait()
-       ,
       getAudio("A6") // play audio 6
              .play()
              ,
      newTimer(4000)
          .start()
          .wait()
+
          ,
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
-.add( getImage("left") , getImage("center") , getImage("right") ) //add selector shapes (invisble)
+.add( getImage("left") , getImage("right") ) //add selector shapes (invisble)
     .settings.frame("dashed 3px black") //define how selection looks like
     .log()
     .wait()
@@ -277,9 +279,23 @@ newSelector("shapes")
 newTimer("hurry", 1200)
     .start()
     .wait()
+    ,
+    
+getCanvas("myCanvas")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("GIF1") )
+     .print()
+     ,
+    getAudio("M") // play audio 2
+            .play()
+           ,
+     newTimer(1500)
+         .start()
+         .wait()
 
 
 )
+
 
 //log relevant variables
 .log( "ReactionTime" , getVar("RT") )
