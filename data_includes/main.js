@@ -4,7 +4,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "audiocheck",  randomize("experiment") , "send" , "final" );
+Sequence( "consent", "audiocheck",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -13,35 +13,33 @@ newTrial( "consent" ,
     ,
     newText("<p>Welcome!</p>")
     ,
-    newText("<p>You are invited to take part in a Brown University research study. Your participation is voluntary.</p>")
+    newText("<p>You and your child are invited to take part in a Brown University research study. Your participation is voluntary.</p>")
      ,
     newText("<p>RESEARCHER: Roman Feiman, PhD, roman_feiman@brown.edu, 190 Thayer St, Providence, RI 02912</p>")
      ,
-    newText("<p>PURPOSE: The study is about how people understand language. We are interested in what adult behavior is like so we can find out how language comprehension and production change as a person develops.</p>")
+    newText("<p>PURPOSE: The study is about what children understand about language. We are interested in the types of information children use when they interpret sentences.</p>")
      ,
-    newText("<p>PROCEDURES: In this survey, you will be asked look at a visual display and locate a particular objects in response to what you read or hear.</p>")
+    newText("<p>PROCEDURES: Your child will be presented with a set (2-4) of options on your computer screen, usually among different kinds of toys. He/She will be asked to choose between the options based upon criteria set by the researcher (usually which choice has more, or a higher reward). During the session, you and your child will be recorded via your computer's webcam and microphone. Video recordings and other data you enter are sent securely to our lab.Your child may also be presented with English sentences one at a time and will be asked to judge whether the sentence is right or appropriate for a given situation. You or your child may also be asked to fill out a questionnaire related to your child’s vocabulary or language(s). The goal is to characterize the process of language development, not to characterize individual children.</p>")
      ,
-    newText("<p>TIME INVOLVED: The study will take approximately 20 minutes of your time.</p>")
+    newText("<p>TIME INVOLVED: The study will take approximately 30-45 minutes of your time.</p>")
      ,
-    newText("<p>COMPENSATION: The amount of compensation you will receive depends on the criterion and the length of the study, in keeping with the averages and standards used in the Amazon MechanicalTurk community.</p>")
+    newText("<p>COMPENSATION: You will receive $5 for compensation of your time. You will be asked to provide your email to researchers in order to receive an electronic gift certificate. You will receive your gift within a week of participating. This email will only be used to send your gift unless you opt-in to future communication with Brown developmental labs.</p>")
     ,
-    newText("<p>RISKS: There is no known or anticipated risk associated with your participation in this study. You may discontinue this study at any time.</p>")
+    newText("<p>RISKS: We have attempted to minimize the risk of yours and your child’s identifiable information being accessed. All information pertaining to the studies (screening forms, behavioral, and video data) will be identified with a unique arbitrary number. In reports, you and your child will not be identified individually. Your child may or may become tired of answering questions. You or your child may choose to stop the procedures at any time.</p>")
     ,
-    newText("<p>BENEFITS: There is no anticipated direct benefit from being in this research study.</p>")
+    newText("<p>BENEFITS: You and your child may not directly benefit from being in this research study.</p>")
     ,
-    newText("<p>CONFIDENTIALITY: Information gathered in these studies will remain strictly confidential and published reports will not mention individuals by name. If shared, data will be identified solely by anonymized numerical codes. Because participants are recruited through Amazon's Mechanical Turk website, participation happens over the internet and we have no information about participantsâ€™ identities. We collect Worker ID numbers through Amazon Mechanical Turk. These will be stored electronically on password-protected computers, to which only authorized researchers will have access. Following standard practice, we will record IP address to check whether a particular internet connection is being used an unreasonable number of times for the same experiment. This information will only be used to exclude multiple datasets generated from the same IP address. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
+    newText("<p>CONFIDENTIALITY: All subjects will be coded and assigned a number to be used for data files. One lab computerized password protected file will link that number with subject identifying and demographic information. If information regarding child abuse or neglect is disclosed or witnessed, it must be reported to appropriate agencies. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
     ,
-    newText("<p>VOLUNTARY: You do not have to be in this study if you do not want to be. Even if you decide to be in this study, you can change your mind and stop at any time.</p>")
+    newText("<p>VOLUNTARY: You and your child do not have to be in this study if you do not want to be. Even if you decide to be in this study, you and/or your child can change your mind and stop at any time.</p>")
     ,
-    newText("<p>CONTACT INFORMATION: If you have any questions about your participation in this study, you can call Roman Feiman at 401-863-6860 or email Roman_Feiman@Brown.edu</p>")
+    newText("<p>CONTACT INFORMATION: If you have any questions about your participation in this study, you can call Roman Feiman at (401) 863-6860 or email Roman_Feiman@Brown.edu</p>")
     ,
-    newText("<p>YOUR RIGHTS: If you have questions about your rights as a research participant, you can contact Brown Universityâ€™s Human Research Protection Program at 401-863-3050 or email them at IRB@Brown.edu.</p>")
+    newText("<p>YOUR RIGHTS: If you have questions about your rights as a research participant, you can contact Brown University’s Human Research Protection Program at 401-863-3050 or email them at IRB@Brown.edu.</p>")
     ,
-    newText("<p>IMPORTANT INFORMATION ABOUT YOUR MTURK ID: This ID does not directly identify you, but it can be linked to your public profile page. You may, therefore, wish to restrict what information you share on this public profile. We will not share your mTurk ID with anyone outside of our research team. If you ever contact us, Amazon.com will automatically insert your email address into the message so that we can reply to you. We will use your name and email only to respond to your communication and will never distribute it to anyone outside of our research team. For more information about the privacy and confidentiality limitations associated with using mTurk please refer to Amazonâ€™s mTurk Privacy Policy: https://www.mturk.com/mturk/privacynotice and https://www.mturk.com/mturk/contact .</p>")
+    newText("<p>CONSENT TO PARTICIPATE:By clicking the link below, you agree that you have read and understand the consent document and that you are this child's parent or legal guardian and both agree to participate in this study. You may print this screen for your records.</p>")
     ,
-    newText("<p>CONSENT TO PARTICIPATE: Clicking the button below confirms that you have read and understood the information in this document, are 18 years old or older and that you agree to volunteer as a research participant for this study.</p>")
-    ,
-    newText("<p>You can print a copy of this form</p>")
+    newText("<p>You can print or request a copy of this form</p>")
 
     ,
     newButton("I Consent")
@@ -59,13 +57,9 @@ newTrial( "audiocheck" ,
     .print()
     .wait()
     ,
-newTextInput("audiocheck")
-    .settings.lines(1)
-    .print()
-,
-newButton("save", "Save")
-    .print()
-    .wait( getTextInput("audiocheck").test.text("sentence") )
+    newButton("I Hear it!")
+        .print()
+        .wait()
 )
 
 
@@ -151,7 +145,10 @@ newImage("08", variable.P8),
 newAudio("A4", variable.A4),
 newAudio("A5", variable.A5),
 newAudio("A6", variable.A6),
-newAudio("M", "Magic.mp3"),
+newAudio("PM", "Ascending.mp3"),
+newAudio("M", "Accent.mp3"),
+newAudio("R", "Cheer.mp3"),
+newAudio("Ma", "Magic.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
@@ -171,8 +168,8 @@ newCanvas( "myCanvas" , 800 , 600 )
     .add( getImage("starter") )
     .settings.frame("dashed 3px black")
     .wait()
-
     ,
+    
 getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("01") )
@@ -188,7 +185,10 @@ getCanvas("myCanvas")
      .print()
           ,
 
-
+    newTimer(1500)
+        .start()
+        .wait()
+    ,
 getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("03") )
@@ -218,10 +218,10 @@ getCanvas("myCanvas")
      .settings.add( "center at 50%" , "center at 50%" , getImage("05") )
      .print()
      ,
-    getAudio("M") // play audio 2
+    getAudio("PM") // play audio 2
             .play()
         ,
-     newTimer(1500)
+     newTimer(3500)
          .start()
          .wait()
          ,
@@ -233,7 +233,7 @@ getCanvas("myCanvas")
     getAudio("M") // play audio 2
             .play()
            ,
-     newTimer(1500)
+     newTimer(2500)
          .start()
          .wait()
          ,
@@ -246,7 +246,7 @@ getCanvas("myCanvas")
       getAudio("A5") // play audio 5
              .play()
              ,
-     newTimer(3000)
+     newTimer(4000)
          .start()
          .wait()
          ,
@@ -276,22 +276,19 @@ newSelector("shapes")
 ,
     getVar("RT").set( v => Date.now() - v ) //RT measurement end
 ,
-newTimer("hurry", 1200)
-    .start()
-    .wait()
-    ,
-    
 getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("GIF1") )
      .print()
      ,
-    getAudio("M") // play audio 2
+    getAudio("R") // play audio 2
             .play()
            ,
-     newTimer(1500)
+     newTimer(4000)
          .start()
-         .wait()
+         .wait(),
+         getAudio("R") // play audio 2
+            .pause()
 
 
 )
@@ -316,12 +313,18 @@ newTrial( "final" ,
     newText("<p>Thank you for your participation!</p>")
         .print()
     ,
-    newText("<p>Your approval code is:</p>")
+    newText("<p>VIDEO RELEASE (OPTIONAL) </p>")
         .print()
     ,
-    newText("<p>TWUU7Y7T<p>")
+    newText("<p>A video will be made of you and your child during the study for the purpose of data analysis. You can consent to allow the researchers to show these videos in classrooms to students, to other researchers at conferences, or for scientific publications, and/or other public settings like radio or television. In any use of such videotapes, no information regarding you or your child’s identity will be released. Consent is voluntary, and is not required for your child to participate in the research. You have the right to ask that the video be stopped or erased during recording. Do you agree that your child’s videotaped session can be used for scientific publications, display in classroom settings, display at scientific conferences or lectures, and/or other public settings like radio or television?<p>")
         .print()
     ,
-    newButton("void")
+    newButton("Yes")
+            .print()
+
+        ,
+    newButton("No")
+            .print()
+
         .wait()
 )
