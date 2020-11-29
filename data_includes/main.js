@@ -100,7 +100,7 @@ newAudio("R", "Cheer.mp3"),
 newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
 .print()
 ,
-newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
+newCanvas( "myCanvasB" , 800 , 600 ) //training canvas
     .settings.css( "border" , "solid 1px black" )
     .settings.center()
     .settings.add( "center at 50%" , "center at 50%" , getImage("B1") )
@@ -109,9 +109,10 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     ,
     newSelector("training")
     .add( getImage("BS")  ) //add selector shapes (invisble)
+     .keys(          "F"   )
         .wait()
         ,
-        getCanvas("myCanvasT") //training p2
+        getCanvas("myCanvasB") //training p2
          .settings.center()
          .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
          .print()
@@ -131,36 +132,51 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
 Template( "training.csv",variable =>
 
 newTrial( "training" ,
-newImage("T1", variable.T1),
-newImage("T2", variable.T2),
-newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
-newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("Tr1", variable.T1),
+newImage("Tr2", variable.T2),
+newAudio("TrS", variable.TS),
+newImage("left", "selector.png"),
+newImage("right", "selector.png"),
 newAudio("R", "Cheer.mp3"),
+newImage("GIF1", "https://i.giphy.com/media/1wX5TJZPqVw3HhyDYn/giphy.gif"),
 
-newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
+newText("<p>Feel free to encourage your child to point to the barn! When they do it, just click on it!</p>")
 .print()
 ,
 newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     .settings.css( "border" , "solid 1px black" )
     .settings.center()
-    .settings.add( "center at 50%" , "center at 50%" , getImage("B1") )
-    .settings.add("center at 50%" , "center at 50%", getImage("BS") )
+    .settings.add( "center at 50%" , "center at 50%" , getImage("Tr1") )
     .print()
     ,
-    newSelector("training")
-    .add( getImage("BS")  ) //add selector shapes (invisble)
+        
+        newKey("F")
         .wait()
         ,
+        
         getCanvas("myCanvasT") //training p2
          .settings.center()
-             .settings.add(1, 78, getImage("left") )
-         .settings.add(287, 78, getImage("center") )
-          .settings.add(572, 78, getImage("right") )
+         .settings.add( "center at 50%" , "center at 50%" , getImage("Tr2") )
+        .settings.add(1, 78, getImage("left") )
+         .settings.add(572, 78, getImage("right") )
+         .print(),
+        getAudio("TrS") // play audio
+        .play(),
+    newTimer(4000)
+         .start()
+         .wait(),
+    newSelector("training")
+    .add( 1, 78, getImage("left") , 572, 78, getImage("right") )
+    .keys(          "F"    ,          "J"   ) 
 
-         .print()
-         ,
-    getAudio("R") // play audio 2
-            .play()
+        .wait(),
+        getCanvas("myCanvasT")
+     .settings.center()
+     .settings.add( "center at 50%" , "center at 50%" , getImage("GIF1") )
+     .print()
+     ,
+   getAudio("R") // play audio 2
+   .play()
            ,
      newTimer(4000)
          .start()
