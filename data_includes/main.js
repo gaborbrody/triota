@@ -131,9 +131,10 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
 Template( "training.csv",variable =>
 
 newTrial( "training" ,
-newImage("B1", "barn.png"),
-newImage("B2", variable.Barn),
-newImage("BS", "barnselector.png"),
+newImage("T1", variable.T1),
+newImage("T2", variable.T2),
+newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newAudio("R", "Cheer.mp3"),
 
 newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
@@ -152,7 +153,10 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
         ,
         getCanvas("myCanvasT") //training p2
          .settings.center()
-         .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
+             .settings.add(1, 78, getImage("left") )
+         .settings.add(287, 78, getImage("center") )
+          .settings.add(572, 78, getImage("right") )
+
          .print()
          ,
     getAudio("R") // play audio 2
