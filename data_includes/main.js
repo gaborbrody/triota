@@ -4,7 +4,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "barn", "audiocheck",  randomize("experiment") , "send" , "final" );
+Sequence( "audiocheck", "barn", "training",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -73,11 +73,7 @@ newTrial( "welcome" ,
     ,
     newText("<p>They have a really high shelves and they cannot reach their toys.</p>")
     ,
-    newText("<p> When they ask for a toy, can you help them by clicking on it?</p>")
-    ,
-    newText("<p>And please turn your browser full screen, and make sure that your computer is not muted</p>")
-    ,
-    newText("<p>Please enter your mturkID and then click the button below to see the detailed instructions and start the experiment.</p>")
+    newText("<p> When they ask for a toy, can you help them by pointing on them?</p>")
     ,
     newTextInput("inputID")
         .print()
@@ -99,8 +95,10 @@ newTrial( "barn" ,
 newImage("B1", "barn.png"),
 newImage("B2", variable.Barn),
 newImage("BS", "barnselector.png"),
+newAudio("R", "Cheer.mp3"),
 
-newText("<p>Encourage your child to point to the barn!</p>")
+newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
+.print()
 ,
 newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     .settings.css( "border" , "solid 1px black" )
@@ -116,13 +114,55 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
         getCanvas("myCanvasT") //training p2
          .settings.center()
          .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
-         .settings.add(267, 564, getImage("starter") )
          .print()
          ,
-         newSelector("starter") //Click to start trials
-         .add( getImage("starter") )
-             .settings.frame("dashed 3px black")
-             .wait()
+    getAudio("R") // play audio 2
+            .play()
+           ,
+     newTimer(4000)
+         .start()
+         .wait(),
+         getAudio("R") // play audio 2
+            .pause()
+)
+
+)
+
+Template( "training.csv",variable =>
+
+newTrial( "training" ,
+newImage("B1", "barn.png"),
+newImage("B2", variable.Barn),
+newImage("BS", "barnselector.png"),
+newAudio("R", "Cheer.mp3"),
+
+newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
+.print()
+,
+newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
+    .settings.css( "border" , "solid 1px black" )
+    .settings.center()
+    .settings.add( "center at 50%" , "center at 50%" , getImage("B1") )
+    .settings.add("center at 50%" , "center at 50%", getImage("BS") )
+    .print()
+    ,
+    newSelector("training")
+    .add( getImage("BS")  ) //add selector shapes (invisble)
+        .wait()
+        ,
+        getCanvas("myCanvasT") //training p2
+         .settings.center()
+         .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
+         .print()
+         ,
+    getAudio("R") // play audio 2
+            .play()
+           ,
+     newTimer(4000)
+         .start()
+         .wait(),
+         getAudio("R") // play audio 2
+            .pause()
 )
 
 )
@@ -305,6 +345,7 @@ newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
 .add( getImage("left") , getImage("right") ) //add selector shapes (invisble)
+.keys(          "F"    ,          "J"   )
     .settings.frame("dashed 3px black") //define how selection looks like
     .log()
     .wait()
