@@ -4,7 +4,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "consent", "audiocheck",  randomize("experiment") , "send" , "final" );
+Sequence( "barn", "audiocheck",  randomize("experiment") , "send" , "final" );
 
 
 newTrial( "consent" ,
@@ -92,6 +92,42 @@ newTrial( "welcome" ,
 )
 .log( "ID" , getVar("ID") )
 
+
+Template( "barn.csv",variable =>
+
+newTrial( "barn" ,
+newImage("B1", "barn.png"),
+newImage("B2", variable.Barn),
+newImage("BS", "barnselector.png"),
+
+newText("<p>Encourage your child to point to the barn!</p>")
+,
+newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
+    .settings.css( "border" , "solid 1px black" )
+    .settings.center()
+    .settings.add( "center at 50%" , "center at 50%" , getImage("B1") )
+    .settings.add("center at 50%" , "center at 50%", getImage("BS") )
+    .print()
+    ,
+    newSelector("training")
+    .add( getImage("BS")  ) //add selector shapes (invisble)
+        .wait()
+        ,
+        getCanvas("myCanvasT") //training p2
+         .settings.center()
+         .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
+         .settings.add(267, 564, getImage("starter") )
+         .print()
+         ,
+         newSelector("starter") //Click to start trials
+         .add( getImage("starter") )
+             .settings.frame("dashed 3px black")
+             .wait()
+)
+
+)
+
+
 newTrial( "instructions" ,
 
 newImage("T1", "T1.png"),
@@ -129,8 +165,7 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
              .settings.frame("dashed 3px black")
              .wait()
 )
-
-Template( variable =>
+Template( "fulldesign.csv",variable =>
 //Load pictures
 newTrial( "experiment",
 newImage("cross", "cross.png"),
