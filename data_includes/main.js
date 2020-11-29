@@ -95,7 +95,7 @@ newTrial( "barn" ,
 newImage("B1", "barn.png"),
 newImage("B2", variable.Barn),
 newImage("BS", "barnselector.png"),
-newAudio("R", "Cheer.mp3"),
+newAudio("R", variable.BaS),
 
 newText("<p>Feel free to encourage your child to point to the barn! When they point on the barn, click on it!</p>")
 .print()
@@ -137,10 +137,11 @@ newImage("Tr2", variable.T2),
 newAudio("TrS", variable.TS),
 newImage("left", "selector.png"),
 newImage("right", "selector.png"),
-newAudio("R", "Cheer.mp3"),
-newImage("GIF1", "https://i.giphy.com/media/1wX5TJZPqVw3HhyDYn/giphy.gif"),
+newAudio("R", "trew.mp3"),
+newImage("GIF1", "https://i.giphy.com/media/1wX5TJZPqVw3HhyDYn/giphy.gif")
+.size(500,500),
 
-newText("<p>Feel free to encourage your child to point to the barn! When they do it, just click on it!</p>")
+newText("<p>Feel free to encourage your child to point the object mentioned! When they do it, just click on it!</p>")
 .print()
 ,
 newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
@@ -249,7 +250,8 @@ newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.p
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
 newImage("GIF1", "https://i.giphy.com/media/xIH1nf7uUuQcU/giphy.gif"),
 
-
+newText("<p>Don't point to the screen or influence your child! When they point an on object, click on it!</p>")
+.print(),
 //Present pictures one by one
 
 newCanvas( "myCanvas" , 800 , 600 )
