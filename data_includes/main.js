@@ -4,8 +4,29 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "audiocheck", "barn", "training",  randomize("experiment") , "send" , "final" );
+Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("experiment") , "send" , "final" );
 
+
+
+
+newTrial( "welcome" ,
+    defaultText
+        .print()
+    ,
+    newText("<p>Add ID</p>")
+    ,
+    newTextInput("inputID")
+        .print()
+    ,
+    newButton("Start")
+        .print()
+        .wait()
+    ,
+    newVar("ID")
+        .global()
+        .set( getTextInput("inputID") )
+)
+.log( "ID" , getVar("ID") )
 
 newTrial( "consent" ,
     defaultText
@@ -51,7 +72,7 @@ newTrial( "audiocheck" ,
     defaultText
         .print()
     ,
-    newText("<p>In order to proceed enter the last word of the audio. If you can't hear it make sure your device is not muted</p>")
+    newText("<p>Do you hear this audio?</p>")
     ,
     newAudio("test", "https://expt.pcibex.net/ibexexps/example/example/test.mp3")
     .print()
@@ -63,30 +84,7 @@ newTrial( "audiocheck" ,
 )
 
 
-newTrial( "welcome" ,
-    defaultText
-        .print()
-    ,
-    newText("<p>Welcome!</p>")
-    ,
-    newText("<p>Piglet and Tigger are playing at their home. They have their toys on their shelves.</p>")
-    ,
-    newText("<p>They have a really high shelves and they cannot reach their toys.</p>")
-    ,
-    newText("<p> When they ask for a toy, can you help them by pointing on them?</p>")
-    ,
-    newTextInput("inputID")
-        .print()
-    ,
-    newButton("Start")
-        .print()
-        .wait()
-    ,
-    newVar("ID")
-        .global()
-        .set( getTextInput("inputID") )
-)
-.log( "ID" , getVar("ID") )
+
 
 
 Template( "barn.csv",variable =>
@@ -248,7 +246,8 @@ newAudio("Ma", "Magic.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
-newImage("GIF1", "https://i.giphy.com/media/xIH1nf7uUuQcU/giphy.gif"),
+newImage("GIF1", "https://i.giphy.com/media/xIH1nf7uUuQcU/giphy.gif")
+.size(800,450),
 
 newText("<p>Don't point to the screen or influence your child! When they point an on object, click on it!</p>")
 .print(),
@@ -419,10 +418,11 @@ newTrial( "final" ,
     ,
     newButton("Yes")
             .print()
-
+            .wait()
+            .log
         ,
     newButton("No")
             .print()
-
-        .wait()
+            .wait()
+            .log
 )
