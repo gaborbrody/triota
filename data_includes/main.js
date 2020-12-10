@@ -33,37 +33,65 @@ newTrial( "consent" ,
         .print()
     ,
     newText("<p>Welcome!</p>")
+    .center()
     ,
     newText("<p>You and your child are invited to take part in a Brown University research study. Your participation is voluntary.</p>")
+    .size(800)
+    .center()
      ,
     newText("<p>RESEARCHER: Roman Feiman, PhD, roman_feiman@brown.edu, 190 Thayer St, Providence, RI 02912</p>")
+    .size(800)
+    .center()
      ,
     newText("<p>PURPOSE: The study is about what children understand about language. We are interested in the types of information children use when they interpret sentences.</p>")
+    .size(800)
+    .center()
      ,
     newText("<p>PROCEDURES: Your child will be presented with a set (2-4) of options on your computer screen, usually among different kinds of toys. He/She will be asked to choose between the options based upon criteria set by the researcher (usually which choice has more, or a higher reward). During the session, you and your child will be recorded via your computer's webcam and microphone. Video recordings and other data you enter are sent securely to our lab.Your child may also be presented with English sentences one at a time and will be asked to judge whether the sentence is right or appropriate for a given situation. You or your child may also be asked to fill out a questionnaire related to your child’s vocabulary or language(s). The goal is to characterize the process of language development, not to characterize individual children.</p>")
+     .size(800)
+     .center()
      ,
     newText("<p>TIME INVOLVED: The study will take approximately 30-45 minutes of your time.</p>")
-     ,
+     .size(800)
+     .center()
+    ,
     newText("<p>COMPENSATION: You will receive $5 for compensation of your time. You will be asked to provide your email to researchers in order to receive an electronic gift certificate. You will receive your gift within a week of participating. This email will only be used to send your gift unless you opt-in to future communication with Brown developmental labs.</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>RISKS: We have attempted to minimize the risk of yours and your child’s identifiable information being accessed. All information pertaining to the studies (screening forms, behavioral, and video data) will be identified with a unique arbitrary number. In reports, you and your child will not be identified individually. Your child may or may become tired of answering questions. You or your child may choose to stop the procedures at any time.</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>BENEFITS: You and your child may not directly benefit from being in this research study.</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>CONFIDENTIALITY: All subjects will be coded and assigned a number to be used for data files. One lab computerized password protected file will link that number with subject identifying and demographic information. If information regarding child abuse or neglect is disclosed or witnessed, it must be reported to appropriate agencies. Brown University staff sometimes review studies like this one to make sure they are being done safely and correctly. If a review of this study takes place, your records may be examined. The reviewers will protect your confidentiality.</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>VOLUNTARY: You and your child do not have to be in this study if you do not want to be. Even if you decide to be in this study, you and/or your child can change your mind and stop at any time.</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>CONTACT INFORMATION: If you have any questions about your participation in this study, you can call Roman Feiman at (401) 863-6860 or email Roman_Feiman@Brown.edu</p>")
+    .size(800)
+    .center()
     ,
     newText("<p>YOUR RIGHTS: If you have questions about your rights as a research participant, you can contact Brown University’s Human Research Protection Program at 401-863-3050 or email them at IRB@Brown.edu.</p>")
-    ,
+        .size(800)
+        .center()
+        ,
     newText("<p>CONSENT TO PARTICIPATE:By clicking the link below, you agree that you have read and understand the consent document and that you are this child's parent or legal guardian and both agree to participate in this study. You may print this screen for your records.</p>")
-    ,
+        .size(800)
+        .center()
+        ,
     newText("<p>You can print or request a copy of this form</p>")
-
+.center()
     ,
     newButton("I Consent")
+    .center()
         .print()
         .wait()
 )
@@ -108,8 +136,8 @@ newCanvas( "myCanvasB" , 800 , 600 ) //training canvas
     newSelector("training")
     .add( getImage("BS")  ) //add selector shapes (invisble)
      .keys(          "F"   )
-        .wait()
-        ,
+     .wait()
+,
         getCanvas("myCanvasB") //training p2
          .settings.center()
          .settings.add( "center at 50%" , "center at 50%" , getImage("B2") )
@@ -167,8 +195,11 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     newSelector("training")
     .add( 1, 78, getImage("left") , 572, 78, getImage("right") )
     .keys(          "F"    ,          "J"   ) 
-
+        .settings.frame("dashed 3px black") //define how selection looks like
         .wait(),
+            newTimer(1000)
+         .start()
+         .wait(),
         getCanvas("myCanvasT")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("GIF1") )
@@ -244,6 +275,7 @@ newAudio("M", "Accent.mp3"),
 newAudio("R", "Cheer.mp3"),
 newAudio("Ma", "Magic.mp3"),
 newImage("left", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
+newImage("center", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("right", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/selector.png"),
 newImage("starter", "https://expt.pcibex.net/ibexexps/gaborbrody/Triota/starter.png"),
 newImage("GIF1", "https://i.giphy.com/media/xIH1nf7uUuQcU/giphy.gif")
@@ -350,7 +382,8 @@ getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("08") )
      .settings.add(1, 78, getImage("left") )
-    .settings.add(572, 78, getImage("right") )
+     .settings.add(287, 78, getImage("center") )
+     .settings.add(572, 78, getImage("right") )
      .print()
     ,
 
@@ -365,14 +398,19 @@ getCanvas("myCanvas")
 newVar("RT").global().set( v => Date.now() ) //RT measurement start
 ,
 newSelector("shapes")
-.add( getImage("left") , getImage("right") ) //add selector shapes (invisble)
-.keys(          "F"    ,          "J"   )
+.add( getImage("left") , getImage("right"), getImage("center") ) //add selector shapes (invisble)
+.keys(          "F"    ,          "J" ,  "G" )
     .settings.frame("dashed 3px black") //define how selection looks like
     .log()
     .wait()
 ,
     getVar("RT").set( v => Date.now() - v ) //RT measurement end
 ,
+     newTimer(1000)
+         .start()
+         .wait()
+
+         ,
 getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("GIF1") )
@@ -419,10 +457,5 @@ newTrial( "final" ,
     newButton("Yes")
             .print()
             .wait()
-            .log
-        ,
-    newButton("No")
-            .print()
-            .wait()
-            .log
+
 )
