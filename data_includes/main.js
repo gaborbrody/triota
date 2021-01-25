@@ -325,7 +325,7 @@ getCanvas("myCanvas")
       getAudio("A4") // play audio 4
              .play()
      ,
-    newTimer(3000)
+    newTimer(1500)
         .start()
         .wait()
         ,
