@@ -4,7 +4,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("block1") , randomize("block2") ,randomize("block3") ,randomize("block4") ,"send" , "final" );
+Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("block1") , randomize("block2") ,randomize("block3") ,randomize("block4"), "multilingual","Vidconsent", "send" ,"final"  );
 
 
 
@@ -176,11 +176,11 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
     .settings.add( "center at 50%" , "center at 50%" , getImage("Tr1") )
     .print()
     ,
-
+        
         newKey("F")
         .wait()
         ,
-
+        
         getCanvas("myCanvasT") //training p2
          .settings.center()
          .settings.add( "center at 50%" , "center at 50%" , getImage("Tr2") )
@@ -194,7 +194,7 @@ newCanvas( "myCanvasT" , 800 , 600 ) //training canvas
          .wait(),
     newSelector("training")
     .add( 1, 78, getImage("left") , 572, 78, getImage("right") )
-    .keys(          "F"    ,          "J"   )
+    .keys(          "F"    ,          "J"   ) 
         .settings.frame("dashed 3px black") //define how selection looks like
         .wait(),
             newTimer(1000)
@@ -266,8 +266,9 @@ newImage("04", variable.P4),
 newImage("05", variable.P5),
 newImage("06", variable.P6),
 newImage("07", variable.P7),
+newImage("08", variable.P8),
 newAudio("A4", variable.A4),
-//newAudio("A5", variable.A5),
+newAudio("A5", variable.A5),
 newAudio("A6", variable.A6),
 newAudio("A7", variable.A7),
 newAudio("PM", "Ascending.mp3"),
@@ -297,7 +298,7 @@ newCanvas( "myCanvas" , 800 , 600 )
     .settings.frame("dashed 3px black")
     .wait()
     ,
-
+    
 getCanvas("myCanvas")
      .settings.center()
      .settings.add( "center at 50%" , "center at 50%" , getImage("01") )
@@ -325,7 +326,7 @@ getCanvas("myCanvas")
       getAudio("A4") // play audio 4
              .play()
      ,
-    newTimer(1500)
+    newTimer(3000)
         .start()
         .wait()
         ,
@@ -370,30 +371,30 @@ getCanvas("myCanvas")
      .settings.add( "center at 50%" , "center at 50%" , getImage("07") )
      .print()
      ,
-
-  //    getAudio("A5") // play audio 5
-  //           .play()
-//             ,
-//     newTimer(4000)
-//         .start()
-//         .wait()
-//         ,
+    
+      getAudio("A5") // play audio 5
+             .play()
+             ,
+     newTimer(4500)
+         .start()
+         .wait()
+         ,
 getCanvas("myCanvas")
      .settings.center()
-     .settings.add( "center at 50%" , "center at 50%" , getImage("07") )
+     .settings.add( "center at 50%" , "center at 50%" , getImage("08") )
      .settings.add(1, 78, getImage("left") )
      .settings.add(287, 78, getImage("center") )
      .settings.add(572, 78, getImage("right") )
      .print()
     ,
+    
 
-
-//     getAudio("A7") // play audio 6
-//             .play()
-//             ,
-//     newTimer(1000)
+     // getAudio("A7") // play audio 6
+    //         .play()
+  //           ,
+ //    newTimer(1000)
 //         .start()
-//         .wait()
+  //       .wait()
 //         ,
       getAudio("A6") // play audio 6
              .play()
@@ -414,7 +415,7 @@ newSelector("shapes")
 ,
     getVar("RT").set( v => Date.now() - v ) //RT measurement end
 ,
-     newTimer(1000)
+     newTimer(1500)
          .start()
          .wait()
 
@@ -427,7 +428,7 @@ getCanvas("myCanvas")
     getAudio("R") // play audio 2
             .play()
            ,
-     newTimer(4000)
+     newTimer(4500)
          .start()
          .wait(),
          getAudio("R") // play audio 2
@@ -449,22 +450,82 @@ getCanvas("myCanvas")
 .log("TransformSide",variable.TransformS)
 .log("NounDist",variable.NounDist)
 )
-SendResults( "send" ) //send results: you have to get here in order for results to be sent at all!!
 
-
-newTrial( "final" ,
+newTrial( "multilingual" ,
 newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
     .print()
+    ,
+    newText("<p>Bilingualism) </p>")
         .print()
+    ,
+    newText("<p>Is your child exposed to a language other than english regularly at home?<p>")
+        .print()
+    ,
+    newButton("Yes", "Yes")
+    .center()
+    .print()
+    ,
+        newImage("selector.png")
+        .size(40, 40)
+    .print(),
+    newButton("No" , "No, only english")
+        .center()
+    .print()
+            ,
+            newSelector("Multiling")
+    .add( getButton("Yes") , getButton("No") )
+    .print()
+    .log()
+    .wait()
+)
+
+newTrial( "Vidconsent" ,
+newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
+    .print()
+        
     ,
     newText("<p>VIDEO RELEASE (OPTIONAL) </p>")
         .print()
     ,
     newText("<p>A video will be made of you and your child during the study for the purpose of data analysis. You can consent to allow the researchers to show these videos in classrooms to students, to other researchers at conferences, or for scientific publications, and/or other public settings like radio or television. In any use of such videotapes, no information regarding you or your child’s identity will be released. Consent is voluntary, and is not required for your child to participate in the research. You have the right to ask that the video be stopped or erased during recording. Do you agree that your child’s videotaped session can be used for scientific publications, display in classroom settings, display at scientific conferences or lectures, and/or other public settings like radio or television?<p>")
         .print()
+        .center()
     ,
-    newButton("Yes")
-            .print()
-            .wait()
+    newButton("Consent", "Yes I consent")
+    .print()
+    .center()
+    ,
+    newImage("selector.png")
+    .size(40, 40)
+    .print(),
+    newButton("NoConsent" , "No, I do not consent")
+         
+        .center()
+     .print()
+
+            ,
+            newSelector("Consent")
+    .add( getButton("Consent") , getButton("NoConsent") )
+    .print()
+    .log()
+    .wait()
+
+
+
+
+)
+SendResults( "send" ) //send results: you have to get here in order for results to be sent at all!!
+
+newTrial( "Final" ,
+newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
+    .print()
+        .print()
+    ,
+    newText("<p>Results Sent</p>")
+        .print()
+    ,
+    newText("<p>A video will be made of you and your child during the study for the purpose of data analysis. You can consent to allow the researchers to show these videos in classrooms to students, to other researchers at conferences, or for scientific publications, and/or other public settings like radio or television. In any use of such videotapes, no information regarding you or your child’s identity will be released. Consent is voluntary, and is not required for your child to participate in the research. You have the right to ask that the video be stopped or erased during recording. Do you agree that your child’s videotaped session can be used for scientific publications, display in classroom settings, display at scientific conferences or lectures, and/or other public settings like radio or television?<p>")
+        .print()
+
 
 )
