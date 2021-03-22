@@ -451,10 +451,10 @@ getCanvas("myCanvas")
 )
 
 newTrial( "multilingual" ,
-newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
+newImage("thanks.jpg")
     .print()
     ,
-    newText("<p>Bilingualism) </p>")
+    newText("<p>Languages at home </p>")
         .print()
     ,
     newText("<p>Is your child exposed to a language other than english regularly at home? (More than 10 hours a week) <p>")
@@ -479,7 +479,7 @@ newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
 )
 
 newTrial( "Vidconsent" ,
-newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
+newImage("thanks.jpg")
     .print()
         
     ,
@@ -516,7 +516,7 @@ newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
 SendResults( "send" ) //send results: you have to get here in order for results to be sent at all!!
 
 newTrial( "Final" ,
-newImage("http://pclpsrescit2.services.brown.edu/blt_lab/ids/images/thanks.jpg")
+newImage("thanks.jpg")
     .print()
         .print()
     ,
