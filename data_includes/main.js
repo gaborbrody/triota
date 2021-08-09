@@ -4,7 +4,7 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 
 //Sequence( "consent", "welcome" , "audiocheck", "instructions",  randomize("experiment") , "send" , "final" );
-Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("block1") , randomize("block2") ,randomize("block3") ,randomize("block4"), "multilingual","Vidconsent", "send" ,"final"  );
+Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("block1") , "break", randomize("block2") ,"break", randomize("block3") ,randomize("block4"), "multilingual","Vidconsent", "send" ,"final"  );
 
 
 
@@ -12,6 +12,7 @@ Sequence( "welcome","consent", "audiocheck", "barn", "training",  randomize("blo
 newTrial( "welcome" ,
     defaultText
         .print()
+        .css("text", "body")
     ,
     newText("<p>Add ID</p>")
     ,
@@ -28,6 +29,22 @@ newTrial( "welcome" ,
 )
 .log( "ID" , getVar("ID") )
 
+newTrial( "break" ,
+newImage("break.png")
+    .print()
+    ,
+    newText("<p>It is time to take a short break! Press start when ready to continue</p>")
+    .print()
+    ,
+       newButton("Start")
+       .center()
+        .print()
+        .wait()
+ 
+
+)
+
+
 newTrial( "consent" ,
     defaultText
         .print()
@@ -37,6 +54,7 @@ newTrial( "consent" ,
     ,
     newText("<p>You and your child are invited to take part in a Brown University research study. Your participation is voluntary.</p>")
     .size(800)
+    .css("text", "body")
     .center()
      ,
     newText("<p>RESEARCHER: Roman Feiman, PhD, roman_feiman@brown.edu, 190 Thayer St, Providence, RI 02912</p>")
@@ -452,6 +470,7 @@ getCanvas("myCanvas")
 
 newTrial( "multilingual" ,
 newImage("thanks.jpg")
+.size(300, 150)
     .print()
     ,
     newText("<p>Languages at home </p>")
@@ -480,6 +499,7 @@ newImage("thanks.jpg")
 
 newTrial( "Vidconsent" ,
 newImage("thanks.jpg")
+.size(300, 150)
     .print()
         
     ,
